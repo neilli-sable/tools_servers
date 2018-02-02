@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  db:
+    image: mysql
+    ports:
+      - "3366:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: prestashop
+      MYSQL_PASSWORD: admin
+
+  prestashop:
+    image: prestashop/prestashop:1.7-7.0
+    ports: ["4567:80"]
+    links: [db]
